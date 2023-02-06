@@ -339,6 +339,20 @@ C_I_2= mm_z*sqrt((mm_error*(1+mm_error))/mm_n_len)
 C_I_2
 
 
+#################Error bar of Model 2
+mm_plot_data = data.frame(
+  mm_x_Val = mX_Model2,
+  mm_y_Val = mY,
+  mm_SD = sqrt(mm_Variance_Model2)  
+)
+
+
+
+mm_plot<-ggplot(mm_plot_data) +
+  geom_bar( aes(x=mm_x_Val.2, y=mY), stat="identity", alpha=0.7) +
+  geom_errorbar( aes(x=mm_x_Val.2, ymin=mY-mm_SD, ymax=mY+mm_SD), width=0.2, colour="purple", alpha=0.5, linewidth=1)
+
+print (mm_plot)
 
 
 ##Task 3
